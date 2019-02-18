@@ -18,9 +18,12 @@ A few examples using the Plotify class
 
 ```
 plotify.boxplot(
-    data=[smokers_FEV1, nonsmokers_FEV1],
-    labels=['Smokers', 'Non-smokers'],
-    ylabel='FEV1 score',
-    title='FEV1 scores for smokers\nand non-smokers'
+  data=[smokers_FEV1, nonsmokers_FEV1],
+  labels=['Smokers', 'Non-smokers'],
+  ylabel='FEV1 score',
+  title='FEV1 scores for smokers\nand non-smokers'
 )
 ```
+
+![alt text](https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/boxplot.png)
+
