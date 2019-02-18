@@ -24,6 +24,6 @@ plotify.boxplot(
   title='FEV1 scores for smokers\nand non-smokers'
 )
 ```
-
-<img src="https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/boxplot.png" width="400px" />
-
+<div style="text-align:center">
+  <img src="https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/boxplot.png" width="600px" />
+</div>
