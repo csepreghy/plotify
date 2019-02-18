@@ -25,5 +25,5 @@ plotify.boxplot(
 )
 ```
 
-<img src="https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/boxplot.png" width="100px" />
+<img src="https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/boxplot.png" width="400px" />
 
