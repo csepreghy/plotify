@@ -34,10 +34,10 @@ plotify = Plotify()
 # Boxplot
 
 plotify.boxplot(
-    data=[smokers_FEV1, nonsmokers_FEV1],
-    labels=['Smokers', 'Non-smokers'],
-    ylabel='FEV1 score',
-    title='FEV1 scores for smokers\nand non-smokers'
+  data=[smokers_FEV1, nonsmokers_FEV1],
+  labels=['Smokers', 'Non-smokers'],
+  ylabel='FEV1 score',
+  title='FEV1 scores for smokers\nand non-smokers'
 )
 
 # Scatter plot
@@ -49,8 +49,8 @@ nonsmokers_x = nonsmokers[:, 0]
 nonsmokers_y = nonsmokers[:, 1]
 
 plotify.scatter_plot(
-    x_list=[nonsmokers_x, smokers_x],
-    y_list=[nonsmokers_y, smokers_y],
+  x_list=[nonsmokers_x, smokers_x],
+  y_list=[nonsmokers_y, smokers_y],
   linewidth = 0.25,
   alpha = 0.5,
   xlabel = 'Age',
