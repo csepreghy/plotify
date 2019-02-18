@@ -53,4 +53,4 @@ plotify.histogram(
   labels = ('Non-smokers', 'Smokers')
 )
 ```
-<img src="https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/scatterplot.png" width="600px" />
+<img src="https://raw.githubusercontent.com/csepreghy/plotify/master/examples_img/histogram.png" width="600px" />
