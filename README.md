@@ -8,7 +8,7 @@ from plotify import Plotify
 plotify = Plotify()
 ```
 
-Then use the available methods. So far we have `boxplot()`, `scatter_plot`, `histogram`.
+Then use the available methods. So far we have `boxplot()`, `scatter_plot()`, `histogram()`.
 
 ## Examples
 
