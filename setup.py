@@ -12,11 +12,14 @@ setup(
     keywords=['matplotlib', 'visualization', 'plot', 'plots', 'python', 'data science', 'machine learning', 'ai'],
     install_requires=[
         'numpy',
-        'matplotlib',
+        'matplotlib'
+        'matplotlib.pyplot',
+        'matplotlib.ticker',
+        'matplotlib.font_manager'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers/Science/Research',
+        'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering :: Visualization',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
