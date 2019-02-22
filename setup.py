@@ -13,9 +13,6 @@ setup(
     install_requires=[
         'numpy',
         'matplotlib'
-        'matplotlib.pyplot',
-        'matplotlib.ticker',
-        'matplotlib.font_manager'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
