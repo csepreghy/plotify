@@ -1,6 +1,6 @@
 # pyPlotify (with silent "py")
 
-A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/)`matplotlib.pyplot`.
+A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/).
 
 Once you have `plotify.py` in your root directory:
 ```
