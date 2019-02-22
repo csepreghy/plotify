@@ -1,5 +1,8 @@
 # pyPlotify (with silent "py")
-A simple class to give plots some styling. It is a very light skin over `matplotlib.pyplot`.
+
+[![Build Status](https://travis-ci.org/csepreghy/plotify.png?branch=master)](https://travis-ci.org/csepreghy/plotify)
+
+A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/)`matplotlib.pyplot`.
 
 Once you have `plotify.py` in your root directory:
 ```
@@ -16,7 +19,7 @@ A few examples using the Plotify class
 
 ### Boxplot
 
-```
+```python
 plotify.boxplot(
   data=[smokers_FEV1, nonsmokers_FEV1],
   labels=['Smokers', 'Non-smokers'],
@@ -28,7 +31,7 @@ plotify.boxplot(
 
 ### Scatter Plot
 
-```
+```python
 plotify.scatter_plot(
   x_list=[nonsmokers_x, smokers_x],
   y_list=[nonsmokers_y, smokers_y],
@@ -44,7 +47,7 @@ plotify.scatter_plot(
 
 ### Histogram
 
-```
+```python
 plotify.histogram(
   x_list = [nonsmokers_x, smokers_x],
   ylabel = 'Number of People',
