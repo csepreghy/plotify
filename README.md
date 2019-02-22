@@ -1,4 +1,4 @@
-# plotify
+# pyPlotify (with silent "py")
 A simple class to give plots some styling. It is a very light skin over `matplotlib.pyplot`.
 
 Once you have `plotify.py` in your root directory:
