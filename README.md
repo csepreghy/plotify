@@ -1,8 +1,5 @@
 # pyPlotify (with silent "py")
 
-.. |PyPi| image:: https://badge.fury.io/py/pyplotify.svg
-.. _PyPi: https://badge.fury.io/py/pyplotify
-
 A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/)`matplotlib.pyplot`.
 
 Once you have `plotify.py` in your root directory:
