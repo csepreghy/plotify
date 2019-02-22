@@ -10,7 +10,7 @@ pip install pyplotify
 
 Once you have it installed in your root directory:
 ```
-from plotify import Plotify
+from pyplotify import Plotify
 
 plotify = Plotify()
 ```
