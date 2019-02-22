@@ -2,6 +2,12 @@
 
 A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/).
 
+### Installation
+
+```sh
+pip install pyplotify
+```
+
 Once you have `plotify.py` in your root directory:
 ```
 from plotify import Plotify
