@@ -1,10 +1,14 @@
 # pyPlotify (with silent "py")
 
-[![Build Status](https://travis-ci.org/csepreghy/plotify.png?branch=master)](https://travis-ci.org/csepreghy/plotify)
+A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/).
 
-A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/)`matplotlib.pyplot`.
+### Installation
 
-Once you have `plotify.py` in your root directory:
+```sh
+pip install pyplotify
+```
+
+Once you have it installed in your root directory:
 ```
 from plotify import Plotify
 
