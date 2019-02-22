@@ -7,12 +7,12 @@ setup(
     description='A simple class to give plots some styling. It is a very light skin over matplotlib.pyplot.',
     author='Andrew Chepreghy',
     author_email='andris788@gmail.com',
-    url='https://github.com/user/reponame',
-    download_url='https://github.com/user/reponame/archive/v_01.tar.gz',
+    url='https://github.com/csepreghy/plotify',
+    download_url='https://github.com/csepreghy/plotify/archive/v0.1.tar.gz',
     keywords=['matplotlib', 'visualization', 'plot', 'plots', 'python', 'data science', 'machine learning', 'ai'],
     install_requires=[
-        'validators',
-        'beautifulsoup4',
+        'numpy',
+        'matplotlib',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
