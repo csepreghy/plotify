@@ -4,6 +4,7 @@ import matplotlib.ticker as ticker
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 class Plotify:
   def __init__(self):
     # Basic configuration
@@ -28,15 +29,15 @@ class Plotify:
     ax.set_facecolor(self.background_color)
 
     bplot = ax.boxplot(
-      data,
-      vert=True,
-      patch_artist=True,
-      labels=labels,
-      boxprops=dict(facecolor=self.c_white, color=self.c_white),
-      capprops=dict(color=self.c_white),
-      whiskerprops=dict(color=self.c_white),
-      flierprops=dict(markeredgecolor=self.c_white),
-      medianprops=dict(color=self.c_white)
+        data,
+        vert=True,
+        patch_artist=True,
+        labels=labels,
+        boxprops=dict(facecolor=self.c_white, color=self.c_white),
+        capprops=dict(color=self.c_white),
+        whiskerprops=dict(color=self.c_white),
+        flierprops=dict(markeredgecolor=self.c_white),
+        medianprops=dict(color=self.c_white)
     )
 
     for patch, color in zip(bplot['boxes'], self.plot_colors):
@@ -50,21 +51,19 @@ class Plotify:
     plt.grid(self.use_grid, color=self.grid_color)
 
     plt.show()
-  
+
   def scatter_plot(
-    self,
-    x_list,
-    y_list,
-    linewidth = 0.5,
-    alpha = 1,
-    xlabel = 'X label',
-    ylabel = 'Y label',
-    title = 'Title',
-    legend_labels = ('Men', 'Women')
+      self,
+      x_list,
+      y_list,
+      linewidth=0.5,
+      alpha=1,
+      xlabel='X label',
+      ylabel='Y label',
+      title='Title',
+      legend_labels=('Men', 'Women')
   ):
-    fig, ax = plt.subplots()
-    fig.patch.set_facecolor(self.background_color)
-    ax.set_facecolor(self.background_color)
+    fig, ax = self.get_figax()
 
     ax.set_ylabel(ylabel)
     ax.set_xlabel(xlabel)
@@ -73,11 +72,11 @@ class Plotify:
 
     for i, x in enumerate(x_list):
       ax.scatter(
-        x,
-        y_list[i],
-        linewidths = linewidth,
-        alpha=alpha,
-        c=self.plot_colors[i]
+          x,
+          y_list[i],
+          linewidths=linewidth,
+          alpha=alpha,
+          c=self.plot_colors[i]
       )
 
     ax.grid(self.use_grid, color=self.grid_color)
@@ -86,17 +85,14 @@ class Plotify:
     plt.show()
 
   def histogram(
-    self,
-    x_list,
-    ylabel = 'Y label',
-    xlabel = 'X label',
-    title = 'Title',
-    labels = ('Label 1', 'Label 2')
+      self,
+      x_list,
+      ylabel='Y label',
+      xlabel='X label',
+      title='Title',
+      labels=('Label 1', 'Label 2')
   ):
-    fig, ax = plt.subplots()
-    fig.patch.set_facecolor(self.background_color)
-    ax.set_facecolor(self.background_color)
-    ax.grid(self.use_grid, color=self.grid_color)
+    fig, ax = self.get_figax()
 
     for i, x in enumerate(x_list):
       ax.hist(x, int(np.max(x) - np.min(x)), facecolor=self.plot_colors[i])
@@ -108,3 +104,28 @@ class Plotify:
     ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
 
     plt.show()
+
+  def bar(
+      self,
+      x_list,
+      y_list,
+      ymin,
+      ymax,
+      linewidth
+  ):
+    fig, ax = self.get_figax()
+
+    plt.xticks(x_list)
+    ax.bar(x_list, height=y_list, width=linewidth, color=self.c_orange)
+    ax.set_ylim(ymin=ymin, ymax=ymax)
+    plt.show()
+
+  def get_figax(self):
+    fig, ax = plt.subplots()
+
+    fig.patch.set_facecolor(self.background_color)
+
+    ax.set_facecolor(self.background_color)
+    ax.grid(self.use_grid, color=self.grid_color)
+
+    return fig, ax
