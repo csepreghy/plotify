@@ -6,7 +6,7 @@ from matplotlib import rcParams
 import matplotlib.font_manager
 import matplotlib.ticker as ticker
 
-from plotify import Plotify
+from pyplotify.__init__ import Plotify
 
 # Data preprocessing
 
