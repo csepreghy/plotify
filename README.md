@@ -1,5 +1,7 @@
 # pyPlotify (with silent "py")
 
+<img src="https://raw.githubusercontent.com/csepreghy/plotify/master/plotify-logo.png" width="180px" />
+
 A simple class to give plots some styling. It is a very light skin over [matplotlib.pyplot](https://matplotlib.org/).
 
 ### Installation
