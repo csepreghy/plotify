@@ -1,4 +1,4 @@
-# pyPlotify (with silent "py")
+# Plotify
 
 <img src="https://raw.githubusercontent.com/csepreghy/plotify/master/plotify-logo.png" width="180px" />
 
