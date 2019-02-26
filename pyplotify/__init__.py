@@ -109,15 +109,29 @@ class Plotify:
       self,
       x_list,
       y_list,
-      ymin,
-      ymax,
-      linewidth
+      ylabel='Y label',
+      xlabel='X label',
+      title='Title',
+      ymin=0,
+      ymax=None,
+      linewidth=0.8,
+      use_x_list_as_xticks=False
   ):
     fig, ax = self.get_figax()
 
-    plt.xticks(x_list)
     ax.bar(x_list, height=y_list, width=linewidth, color=self.c_orange)
-    ax.set_ylim(ymin=ymin, ymax=ymax)
+    ax.set_ylim(ymin=ymin)
+    ax.set_ylabel(ylabel)
+    ax.set_xlabel(xlabel)
+    ax.set_title(title)
+
+    if ymax != None:
+      ax.set_ylim(ymax=ymax)
+
+    if use_x_list_as_xticks == True:
+      plt.xticks(x_list)
+    plt.xticks(rotation=70)
+    plt.tight_layout()
     plt.show()
 
   def get_figax(self):
