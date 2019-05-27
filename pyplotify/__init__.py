@@ -9,7 +9,7 @@ class Plotify:
   def __init__(self):
     # Basic configuration
     self.use_grid = True
-    rcParams['font.sans-serif'] = ['Arial']
+
     plt.style.use('dark_background')
 
     # Color Constants
@@ -21,7 +21,11 @@ class Plotify:
     self.c_red = '#ED553B'
     self.c_white = '#FFFFFF'
 
-    self.plot_colors = [self.c_cyan, self.c_orange, self.c_red]
+    self.plot_colors = [self.c_orange, self.c_cyan, self.c_red]
+
+    rcParams.update({
+        'font.sans-serif': 'Arial'
+    })
 
   def boxplot(self, data, labels, title, ylabel):
     fig, ax = plt.subplots()
@@ -61,14 +65,21 @@ class Plotify:
       xlabel='X label',
       ylabel='Y label',
       title='Title',
-      legend_labels=('Men', 'Women')
+      legend_labels=(''),
+      arrows=[],
+      equal_axis=False,
+      tickfrequencyone=True,
+      show_plot=True,
+      ax=None
   ):
-    fig, ax = self.get_figax()
+    if ax == None:
+      fig, ax = self.get_figax()
 
     ax.set_ylabel(ylabel)
     ax.set_xlabel(xlabel)
     ax.set_title(title)
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+    if tickfrequencyone == True:
+      ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
 
     for i, x in enumerate(x_list):
       ax.scatter(
@@ -76,13 +87,73 @@ class Plotify:
           y_list[i],
           linewidths=linewidth,
           alpha=alpha,
-          c=self.plot_colors[i]
+          c=self.plot_colors[i],
+          edgecolor='#333333'
       )
+
+    if len(arrows) > 0:
+      for arrow in arrows:
+        plt.arrow(
+            x=arrow['x'],
+            y=arrow['y'],
+            dx=arrow['dx'],
+            dy=arrow['dy'],
+            width=arrow['width'],
+            color=arrow['color'],
+            alpha=0.8)
 
     ax.grid(self.use_grid, color=self.grid_color)
     ax.legend(legend_labels, facecolor=self.legend_color)
 
-    plt.show()
+    if equal_axis == True:
+      plt.axis('equal')
+
+    #plt.savefig((title + str(np.random.rand(1)[0]) + '.png'),
+    #            facecolor=self.background_color, dpi=180)
+
+    if show_plot == True:
+      plt.show()
+
+  def scatter3d(
+      self,
+      x,
+      y,
+      z,
+      linewidth=0.5,
+      alpha=1,
+      xlabel='X label',
+      ylabel='Y label',
+      zlabel='Z label',
+      title='Title',
+      arrows=[],
+      equal_axis=False,
+      show=True
+  ):
+    fig, ax = self.get_figax3d()
+
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_zlabel(zlabel)
+    ax.set_title(title)
+    # ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+
+    ax.scatter(
+        x,
+        y,
+        z,
+        alpha=alpha,
+        c=self.c_orange,
+        edgecolor='#555555'
+    )
+
+    ax.grid(self.use_grid, color=self.grid_color)
+
+    if equal_axis == True:
+      plt.axis('equal')
+
+    # plt.savefig((title + str(np.random.rand(1)[0]) + '.png'), facecolor=self.background_color, dpi=180)
+    if show == True:
+      plt.show()
 
   def histogram(
       self,
@@ -115,7 +186,10 @@ class Plotify:
       ymin=0,
       ymax=None,
       linewidth=0.8,
-      use_x_list_as_xticks=False
+      use_x_list_as_xticks=False,
+      xticks=[],
+      rotation=0,
+      show=True
   ):
     fig, ax = self.get_figax()
 
@@ -130,16 +204,76 @@ class Plotify:
 
     if use_x_list_as_xticks == True:
       plt.xticks(x_list)
-    plt.xticks(rotation=70)
-    plt.tight_layout()
-    plt.show()
 
-  def get_figax(self):
-    fig, ax = plt.subplots()
+    if len(xticks) > 0:
+      ax.set_xticklabels(xticks)
+      ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+
+    plt.xticks(rotation=rotation)
+    plt.tight_layout()
+    if show == True:
+      plt.show()
+
+    # plt.savefig((title + str(np.random.rand(1)[0]) + '.png'), facecolor=self.background_color, dpi=120)
+
+    return ax
+
+  def plot(
+      self,
+      y_list,
+      ylabel='Y label',
+      xlabel='X label',
+      title='Title',
+      show_plot=True,
+      use_x_list_as_xticks=False,
+      tickfrequencyone=False,
+      equal_axis=False
+  ):
+    fig, ax = self.get_figax()
+
+    ax.set_ylabel(ylabel)
+    ax.set_xlabel(xlabel)
+    ax.set_title(title)
+
+    if equal_axis == True:
+      plt.axis('equal')
+
+    if tickfrequencyone == True:
+      ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+
+    plt.plot(y_list, color=self.c_orange)
+
+    if show_plot == True:
+      plt.show()
+
+    return
+
+  def get_figax(self, is3d=False):
+    fig, ax = plt.subplots(figsize=(8, 6))
+    fig.patch.set_facecolor(self.background_color)
+
+    ax.set_facecolor(self.background_color)
+    ax.tick_params(colors=self.c_white)
+    ax.xaxis.label.set_color(self.c_white)
+    ax.yaxis.label.set_color(self.c_white)
+    ax.grid(self.use_grid, color=self.grid_color)
+
+    return fig, ax
+
+  def get_figax3d(self):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.xaxis.pane.fill = False
+    ax.yaxis.pane.fill = False
+    ax.zaxis.pane.fill = False
 
     fig.patch.set_facecolor(self.background_color)
 
     ax.set_facecolor(self.background_color)
+    ax.tick_params(colors=self.c_white)
+    ax.xaxis.label.set_color(self.c_white)
+    ax.yaxis.label.set_color(self.c_white)
     ax.grid(self.use_grid, color=self.grid_color)
 
     return fig, ax
