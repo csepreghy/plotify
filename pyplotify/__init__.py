@@ -57,20 +57,20 @@ class Plotify:
     plt.show()
 
   def scatter_plot(
-      self,
-      x_list,
-      y_list,
-      linewidth=0.5,
-      alpha=1,
-      xlabel='X label',
-      ylabel='Y label',
-      title='Title',
-      legend_labels=(''),
-      arrows=[],
-      equal_axis=False,
-      tickfrequencyone=True,
-      show_plot=True,
-      ax=None
+    self,
+    x_list,
+    y_list,
+    linewidth=0.5,
+    alpha=1,
+    xlabel='X label',
+    ylabel='Y label',
+    title='Title',
+    legend_labels=(''),
+    arrows=[],
+    equal_axis=False,
+    tickfrequencyone=True,
+    show_plot=True,
+    ax=None
   ):
     if ax == None:
       fig, ax = self.get_figax()
@@ -115,19 +115,19 @@ class Plotify:
       plt.show()
 
   def scatter3d(
-      self,
-      x,
-      y,
-      z,
-      linewidth=0.5,
-      alpha=1,
-      xlabel='X label',
-      ylabel='Y label',
-      zlabel='Z label',
-      title='Title',
-      arrows=[],
-      equal_axis=False,
-      show=True
+    self,
+    x,
+    y,
+    z,
+    linewidth=0.5,
+    alpha=1,
+    xlabel='X label',
+    ylabel='Y label',
+    zlabel='Z label',
+    title='Title',
+    arrows=[],
+    equal_axis=False,
+    show=True
   ):
     fig, ax = self.get_figax3d()
 
@@ -152,16 +152,15 @@ class Plotify:
       plt.axis('equal')
 
     # plt.savefig((title + str(np.random.rand(1)[0]) + '.png'), facecolor=self.background_color, dpi=180)
-    if show == True:
-      plt.show()
+    if show == True: plt.show()
 
   def histogram(
-      self,
-      x_list,
-      ylabel='Y label',
-      xlabel='X label',
-      title='Title',
-      labels=('Label 1', 'Label 2')
+    self,
+    x_list,
+    ylabel='Y label',
+    xlabel='X label',
+    title='Title',
+    labels=('Label 1', 'Label 2')
   ):
     fig, ax = self.get_figax()
 
@@ -177,19 +176,19 @@ class Plotify:
     plt.show()
 
   def bar(
-      self,
-      x_list,
-      y_list,
-      ylabel='Y label',
-      xlabel='X label',
-      title='Title',
-      ymin=0,
-      ymax=None,
-      linewidth=0.8,
-      use_x_list_as_xticks=False,
-      xticks=[],
-      rotation=0,
-      show=True
+    self,
+    x_list,
+    y_list,
+    ylabel='Y label',
+    xlabel='X label',
+    title='Title',
+    ymin=0,
+    ymax=None,
+    linewidth=0.8,
+    use_x_list_as_xticks=False,
+    xticks=[],
+    rotation=0,
+    show=True
   ):
     fig, ax = self.get_figax()
 
@@ -219,37 +218,48 @@ class Plotify:
     return ax
 
   def plot(
-      self,
-      y_list,
-      ylabel='Y label',
-      xlabel='X label',
-      title='Title',
-      show_plot=True,
-      use_x_list_as_xticks=False,
-      tickfrequencyone=False,
-      equal_axis=False
+    self,
+    y_list,
+    ylabel='Y label',
+    xlabel='X label',
+    title='Title',
+    show_plot=True,
+    use_x_list_as_xticks=True,
+    tickfrequencyone=False,
+    equal_axis=False,
+    x_list=[],
+    figsize=(8,6),
+    filename='filename',
+    ymin=-9999,
+    ymax=9999,
+    save=False
   ):
-    fig, ax = self.get_figax()
+    fig, ax = self.get_figax(figsize=figsize)
 
     ax.set_ylabel(ylabel)
     ax.set_xlabel(xlabel)
     ax.set_title(title)
-
+    if ymin != -9999: ax.set_ylim(ymin=ymin)
+    if ymax != 9999: ax.set_ylim(ymax=ymax)
+    
     if equal_axis == True:
       plt.axis('equal')
 
     if tickfrequencyone == True:
       ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
 
-    plt.plot(y_list, color=self.c_orange)
+    if len(x_list) == 0: plt.plot(x_list, color=self.c_orange)
+    if len(x_list) > 0: plt.plot(x_list, y_list, color=self.c_orange)
+    
+    if save == True: plt.savefig(('plots/' + filename), facecolor=self.background_color, dpi=180)
 
     if show_plot == True:
       plt.show()
 
-    return
+    return fig, ax
 
-  def get_figax(self, is3d=False):
-    fig, ax = plt.subplots(figsize=(8, 6))
+  def get_figax(self, is3d=False, figsize=(8, 6)):
+    fig, ax = plt.subplots(figsize=figsize)
     fig.patch.set_facecolor(self.background_color)
 
     ax.set_facecolor(self.background_color)

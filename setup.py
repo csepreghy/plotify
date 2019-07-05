@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name='pyplotify',
     packages=['pyplotify'],
-    version='0.1.5',
+    version='0.2.0',
     license='MIT',
     description='A simple class to give plots some styling. It is a very light skin over matplotlib.pyplot.',
     author='Andrew Chepreghy',
@@ -23,5 +23,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7'
     ],
 )
